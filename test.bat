@@ -1,15 +1,15 @@
-type nul > file1.txt
 type nul > file2.txt
+type nul > file3.txt
 
 dir
 
-copy file1.txt file1_copy.txt
+xcopy file1.txt file1_copy.txt
 set /A exit_code=%ERRORLEVEL%
 
-copy file2.txt file2_copy.txt
+xcopy file2.txt file2_copy.txt
 set /A exit_code=exit_code+%ERRORLEVEL%
 
-copy file3.txt file3_copy.txt
+xcopy file3.txt file3_copy.txt
 set /A exit_code=exit_code+%ERRORLEVEL%
 
 echo Hello
