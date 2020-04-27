@@ -25,5 +25,4 @@ jobs:
         SET base_dir=%cd%
         ECHO %base_dir%
         call gh-actions-test\test.bat 
-        ECHO %ERRORLEVEL%
-        EXIT /B 1
+        EXIT /B %ERRORLEVEL%
