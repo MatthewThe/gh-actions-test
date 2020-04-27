@@ -1,0 +1,29 @@
+name: native windows
+
+on:
+  push:
+    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: create_dirs
+      run: cd .. || mkdir my_rel my_build
+
+
+    - name: configure_and_make
+      run: |
+        cd ..
+        SET base_dir=%cd%
+        ECHO %base_dir%
+        call gh-actions-test\test.bat 
+        ECHO %ERRORLEVEL%
+        EXIT /B 1
