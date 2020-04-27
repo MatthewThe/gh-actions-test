@@ -14,4 +14,6 @@ set /A exit_code=exit_code+%ERRORLEVEL%
 
 echo Hello
 
+cd ../
+
 EXIT /B %exit_code%
