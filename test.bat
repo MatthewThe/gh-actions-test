@@ -4,7 +4,7 @@ type nul > file3.txt
 
 dir
 
-xcopy f*e1.txt ..\
+xcopy fl*e1.txt ..\
 set /A exit_code=%ERRORLEVEL%
 
 echo %exit_code%
