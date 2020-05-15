@@ -3,27 +3,21 @@ type nul > file2.txt
 type nul > file3.txt
 
 dir
+RELEASE_DIR=..\
 
-xcopy fl*e1.txt ..\
-where /Q fl*e1.txt
-set /A exit_code=%ERRORLEVEL%
-
-echo %exit_code%
-
-where /Q f*e1.txt
-echo %ERRORLEVEL%
-
-
-xcopy file2.txt ..\
-set /A exit_code=exit_code+%ERRORLEVEL%
-
-echo %exit_code%
-
-xcopy file3.txt ..\
-set /A exit_code=exit_code+%ERRORLEVEL%
+call :copytorelease fl*e1.txt
+call :copytorelease file2.txt
+call :copytorelease file3.txt
 
 echo Hello %exit_code%
 
 cd ..\
+dir
 
 EXIT /B %exit_code%
+
+:copytorelease
+xcopy %1 "%RELEASE_DIR%"
+where /Q %1
+set /A exit_code=exit_code+%ERRORLEVEL%
+EXIT /B
