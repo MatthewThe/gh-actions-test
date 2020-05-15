@@ -9,11 +9,11 @@ echo out %RELEASE_DIR%
 
 set /A exit_code=0
 
-call :copytorelease fl*e1.txt
+call :copytorelease f*e1.txt
 
 echo Hello %exit_code%
 
-call :copytorelease file2.txt
+call :copytorelease fl*e2.txt
 
 echo Hello %exit_code%
 
