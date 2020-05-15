@@ -5,6 +5,10 @@ type nul > file3.txt
 dir
 RELEASE_DIR=..\
 
+echo out %RELEASE_DIR%
+
+set /A exit_code=0
+
 call :copytorelease fl*e1.txt
 
 echo Hello %exit_code%
@@ -23,7 +27,7 @@ dir
 EXIT /B %exit_code%
 
 :copytorelease
-echo %RELEASE_DIR%
+echo in %RELEASE_DIR%
 xcopy %1 "%RELEASE_DIR%"
 where /Q %1
 set /A exit_code=exit_code+%ERRORLEVEL%
