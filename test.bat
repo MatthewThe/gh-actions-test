@@ -3,7 +3,7 @@ type nul > file2.txt
 type nul > file3.txt
 
 dir
-RELEASE_DIR=..\
+set RELEASE_DIR=..\
 
 echo out %RELEASE_DIR%
 
