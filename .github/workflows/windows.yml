@@ -23,8 +23,9 @@ jobs:
     - name: Install dependencies
       shell: bash -el {0}
       run: |
-        mamba install -c conda-forge pyinstaller
-        mamba install -c bioconda mokapot
+        mamba install -c conda-forge nomkl
+        mamba install -c conda-forge numpy scipy pandas networkx pyqt pyinstaller=6.1.0 bottleneck toml threadpoolctl
+        mamba install -c bioconda mokapot triqler
     - name: Collect submodules
       run: |
         mamba run python import_lxml.py
