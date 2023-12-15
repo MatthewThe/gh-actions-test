@@ -24,7 +24,7 @@ jobs:
       shell: bash -el {0}
       run: |
         mamba install -c conda-forge nomkl
-        mamba install -c conda-forge numpy scipy pandas networkx pyqt pyinstaller
+        mamba install -c conda-forge libxml2=2.11.6 numpy scipy pandas networkx pyqt pyinstaller
         mamba install -c bioconda mokapot triqler
     - name: Collect submodules
       run: |
