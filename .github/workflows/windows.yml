@@ -23,7 +23,8 @@ jobs:
     - name: Install dependencies
       shell: bash -el {0}
       run: |
-        mamba install -c conda-forge mokapot pyinstaller
+        mamba install -c conda-forge pyinstaller
+        mamba install -c bioconda mokapot
     - name: Collect submodules
       run: |
         mamba run python import_lxml.py
