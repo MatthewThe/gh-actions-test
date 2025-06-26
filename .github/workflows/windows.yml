@@ -15,6 +15,17 @@ jobs:
     steps:
       - name: download-xml
         run: |
-          curl -L https://proteowizard.sourceforge.io/releases/bt81.xml -o bt81.xml
+          CALL :downloadfile "https://proteowizard.sourceforge.io/releases/bt81.xml" "bt81.xml"
+          DIR
+          EXIT /B
+          
+          :downloadfile
+          where curl >nul 2>&1
+          IF %ERRORLEVEL%==0 (
+              curl -L -A "Mozilla/5.0" "%~1" -o "%~2"
+          ) ELSE (
+              PowerShell "[Net.ServicePointManager]::SecurityProtocol = 'Tls12'; $wc = New-Object System.Net.WebClient; $wc.Headers.Add('User-Agent', 'Mozilla/5.0'); $wc.DownloadFile('%~1','%~2')"
+          )
+          EXIT /B
 
 
