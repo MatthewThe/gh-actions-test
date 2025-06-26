@@ -20,13 +20,16 @@ jobs:
           EXIT /B
           
           :downloadfile
-          echo Downloading %1 to %2
+          SET URL=%~1
+          SET OUT=%~2
+          
           where curl >nul 2>&1
           IF %ERRORLEVEL%==0 (
-              curl -L "%~1" -o "%~2"
+              curl -L -A "Mozilla/5.0" "%URL%" -o "%OUT%"
           ) ELSE (
-              PowerShell "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; (new-object System.Net.WebClient).DownloadFile('%1','%2')"
+              PowerShell -Command "[Net.ServicePointManager]::SecurityProtocol = 'Tls12'; $wc = New-Object System.Net.WebClient; $wc.Headers.Add('User-Agent','Mozilla/5.0'); $wc.DownloadFile('%URL%','%OUT%')"
           )
           EXIT /B
+
 
 
