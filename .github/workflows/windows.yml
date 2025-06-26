@@ -17,7 +17,9 @@ jobs:
       - name: download-xml
         run: |
           DIR
-          CALL .github/workflows/download_file_macro.bat "https://sourceforge.net/projects/asio/files/asio/1.18.2%20(Stable)/boost_asio_1_18_2.zip/download" "%~dp0\bt81.xml"
+          set BOOST_ASIO_BASE=boost_asio_1_30_2
+          set BOOST_ASIO_URL=https://sourceforge.net/projects/asio/files/asio/1.30.2%%20(Stable)/%BOOST_ASIO_BASE%.zip/download
+          CALL .github/workflows/download_file_macro.bat "%BOOST_ASIO_URL%" "%~dp0\bt81.xml"
           DIR %~dp0
           EXIT /B
 
