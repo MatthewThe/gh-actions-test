@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: download-xml
         run: |
-          CALL :downloadfile "https://sourceforge.net/projects/asio/files/asio/1.18.2%20(Stable)/boost_asio_1_18_2.zip/download" "%~dp0\bt81.xml"
+          CALL :downloadfile "https://sourceforge.net/projects/asio/files/asio/1.18.2 (Stable)/boost_asio_1_18_2.zip/download" "%~dp0\bt81.xml"
           DIR %~dp0
           EXIT /B
           
