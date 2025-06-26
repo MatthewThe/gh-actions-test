@@ -15,8 +15,8 @@ jobs:
     steps:
       - name: download-xml
         run: |
-          CALL :downloadfile "https://proteowizard.sourceforge.io/releases/bt81.xml" "bt81.xml"
-          DIR
+          CALL :downloadfile "https://proteowizard.sourceforge.io/releases/bt81.xml" "%~dp0\bt81.xml"
+          DIR %~dp0
           EXIT /B
           
           :downloadfile
