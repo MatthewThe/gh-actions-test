@@ -15,4 +15,5 @@ jobs:
     steps:
       - name: download-xml
         run: |
-          PowerShell "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; (new-object System.Net.WebClient).DownloadFile('https://proteowizard.sourceforge.io/releases/bt81.xml','bt81.xml')"
+          wget https://proteowizard.sourceforge.io/releases/bt81.xml -O bt81.xml
+
