@@ -20,6 +20,22 @@ jobs:
           CALL .github/workflows/download_file_macro.bat
           CALL :downloadfile "https://sourceforge.net/projects/asio/files/asio/1.18.2 (Stable)/boost_asio_1_18_2.zip/download" "%~dp0\bt81.xml"
           DIR %~dp0
+
+          echo %~dp0
+
+          :parse
+          IF "%~1"=="" GOTO endparse
+          IF "%~1"=="-s" (set SRC_DIR=%~2)
+          IF "%~1"=="-b" (set BUILD_DIR=%~2)
+          IF "%~1"=="-r" (set RELEASE_DIR=%~2)
+          IF "%~1"=="-g" (set NO_GUI=true)
+          IF "%~1"=="-e" (set VENDOR=true)
+          SHIFT
+          GOTO parse
+          :endparse
+
+          echo %~dp0
+
           EXIT /B
 
 
