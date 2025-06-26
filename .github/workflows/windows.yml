@@ -15,5 +15,6 @@ jobs:
     steps:
       - name: download-xml
         run: |
-          wget https://proteowizard.sourceforge.io/releases/bt81.xml -O bt81.xml
+          curl -L https://proteowizard.sourceforge.io/releases/bt81.xml -o bt81.xml
+
 
