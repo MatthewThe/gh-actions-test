@@ -9,23 +9,10 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    defaults:
+      run:
+        shell: cmd
     steps:
-    - uses: actions/checkout@v3
-    - name: Create conda environment
-      uses: conda-incubator/setup-miniconda@v2
-      with:
-        python-version: 3.9
-        mamba-version: "*"
-        channels: conda-forge,defaults
-        channel-priority: true
-        activate-environment: picked_group_fdr_gui
-    - name: Install dependencies
-      shell: bash -el {0}
-      run: |
-        mamba install -c conda-forge nomkl
-        mamba install -c conda-forge libxml2=2.11.6 numpy scipy pandas networkx pyqt pyinstaller
-        mamba install -c bioconda mokapot triqler
-    - name: Collect submodules
-      run: |
-        mamba run python import_lxml.py
+      - name: download-xml
+        run: |
+          PowerShell "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; (new-object System.Net.WebClient).DownloadFile('https://proteowizard.sourceforge.io/releases/bt81.xml','bt81.xml')"
