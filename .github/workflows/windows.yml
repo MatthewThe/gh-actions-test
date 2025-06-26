@@ -13,23 +13,13 @@ jobs:
       run:
         shell: cmd
     steps:
+      - uses: actions/checkout@v2
       - name: download-xml
         run: |
+          DIR
+          CALL .github/workflows/download_file_macro.bat
           CALL :downloadfile "https://sourceforge.net/projects/asio/files/asio/1.18.2 (Stable)/boost_asio_1_18_2.zip/download" "%~dp0\bt81.xml"
           DIR %~dp0
-          EXIT /B
-          
-          :downloadfile
-          SET URL=%~1
-          SET OUT=%~2
-          
-          echo Downloading %URL% to %OUT%
-          where curl >nul 2>&1
-          IF %ERRORLEVEL%==0 (
-              curl -L "%URL%" -o "%OUT%"
-          ) ELSE (
-              PowerShell "[Net.ServicePointManager]::SecurityProtocol = 'tls12, tls11, tls'; (new-object System.Net.WebClient).DownloadFile('%URL%','%OUT%')"
-          )
           EXIT /B
 
 
